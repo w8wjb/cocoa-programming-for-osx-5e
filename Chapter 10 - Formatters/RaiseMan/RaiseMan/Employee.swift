@@ -9,11 +9,12 @@
 import Foundation
 
 class Employee: NSObject {
-    var name: String? = "New Employee"
-    var raise: Float = 0.05
+    @objc dynamic var name: String? = "New Employee"
+    @objc dynamic var raise: Float = 0.05
     
-    func validateRaise(raiseNumberPointer: AutoreleasingUnsafeMutablePointer<NSNumber?>) throws {
-        let raiseNumber = raiseNumberPointer.memory
+    
+    @objc func validateRaise(_ raiseNumberPointer: AutoreleasingUnsafeMutablePointer<AnyObject?>) throws {
+        let raiseNumber = raiseNumberPointer.pointee
         if raiseNumber == nil {
             let domain = "UserInputValidationErrorDomain"
             let code = 0
